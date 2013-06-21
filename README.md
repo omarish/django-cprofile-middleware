@@ -9,7 +9,7 @@ I found simple example on @dcramer's [slideshare](http://www.slideshare.net/zeeg
 
 Move ```profile.py``` to an application's middleware directory. If you're creating the middleware directory for the first time, be sure to add an ```__init__.py``` file to it. We've all forgotten to do that many times before ;).
 
-Then, add ```profile.ProfilerMiddleware``` to your ```MIDDLEWARE_CLASSES```. 
+Then, add ```profile.ProfilerMiddleware``` to the end your ```MIDDLEWARE_CLASSES```. 
 
 For example:
 
@@ -22,6 +22,8 @@ MIDDLEWARE_CLASSES = (
     'app.middleware.profile.ProfilerMiddleware'
 )
 ```
+
+Again, add the profiler middleware to _the end_ of `MIDDLEWARE_CLASSES` so that it can include middleware operations in the profile.
 
 ## Running & Sorting Results
 
