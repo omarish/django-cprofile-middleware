@@ -3,6 +3,7 @@ from distutils.core import setup
 setup(
     name = 'django-cprofile-middleware',
     packages = ['django_cprofile_middleware'],
+    license = 'MIT',
     version = '0.1',
     description = 'Easily add cProfile profiling to django views.',
     author = 'Omar Bohsali',
