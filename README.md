@@ -3,13 +3,11 @@ django-cprofile-middleware
 
 This is a simple profiling middleware for Django applications. I wrote it because I got tired of printing "start" "stop" "stop 2" in my programs to find the bottlenecks.
 
-I found simple example on @dcramer's [slideshare](http://www.slideshare.net/zeeg/django-con-high-performance-django-presentation) and modified it to support sorting.
+I found a simple example on @dcramer's [slideshare](http://www.slideshare.net/zeeg/django-con-high-performance-django-presentation) and modified it to support sorting.
 
 ## Installing
 
-Move ```profile.py``` to an application's middleware directory. If you're creating the middleware directory for the first time, be sure to add an ```__init__.py``` file to it. We've all forgotten to do that many times before ;).
-
-Then, add ```profile.ProfilerMiddleware``` to the end your ```MIDDLEWARE_CLASSES```. 
+Add ```django_cprofile_middleware.middleware.ProfilerMiddleware``` to the end your ```MIDDLEWARE_CLASSES```. 
 
 For example:
 
@@ -19,7 +17,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'startup.do.work.FindProductMarketFitMiddleware',
     ...
-    'app.middleware.profile.ProfilerMiddleware'
+    'django_cprofile_middleware.middleware.ProfilerMiddleware'
 )
 ```
 
@@ -27,7 +25,7 @@ Again, add the profiler middleware to _the end_ of `MIDDLEWARE_CLASSES` so that 
 
 ## Running & Sorting Results
 
-Once you've installed it, add ```?prof``` to any URL to see the profiler's stats. For example to see profile stats for ```http://localhost:8000/foo/```, visit ```http://localhost:8000/foo/?prof```.
+Once you've installed it, log in as a user who has staff privileges and add ```?prof``` to any URL to see the profiler's stats. For example to see profile stats for ```http://localhost:8000/foo/```, visit ```http://localhost:8000/foo/?prof```.
 
 You can also pass some options:
 
