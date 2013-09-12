@@ -7,7 +7,11 @@ I found a simple example on @dcramer's [slideshare](http://www.slideshare.net/ze
 
 ## Installing
 
-Add ```django_cprofile_middleware.middleware.ProfilerMiddleware``` to the end your ```MIDDLEWARE_CLASSES```. 
+```bash
+$ pip install django-cprofile-middleware
+```
+
+Then add ```django_cprofile_middleware.middleware.ProfilerMiddleware``` to the end your ```MIDDLEWARE_CLASSES```. 
 
 For example:
 
