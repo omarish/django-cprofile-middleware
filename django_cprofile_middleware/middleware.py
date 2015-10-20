@@ -2,8 +2,13 @@ try:
     import cProfile as profile
 except ImportError:
     import profile
+
+try:
+    from cStringIO import StringIO
+except:
+    from io import StringIO
+
 import pstats
-from io import StringIO
 from django.conf import settings
 
 
