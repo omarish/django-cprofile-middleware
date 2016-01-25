@@ -9,7 +9,7 @@ setup(
     author = 'Omar Bohsali',
     author_email = 'omar.bohsali@gmail.com',
     url = 'https://github.com/omarish/django-cprofile-middleware/',
-    download_url = 'https://github.com/omarish/django-cprofile-middleware/tarball/0.1',
+    download_url = 'https://github.com/omarish/django-cprofile-middleware/tarball/0.2',
     keywords = ['django','profiling','cProfile'],
     classifiers = [],
 )
