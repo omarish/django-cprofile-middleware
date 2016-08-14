@@ -37,6 +37,8 @@ You can also pass some options:
 
 **sort:** The field you'd like to sort results by. Default is ```time```. For all the options you can pass, see the [docs for pstats](http://docs.python.org/2/library/profile.html#pstats.Stats.sort_stats).
 
+**download:** Download profile file, that can be visualized in multiple viewers, e.g. [SnakeViz](https://github.com/jiffyclub/snakeviz/) or [RunSnakeRun](http://www.vrplumber.com/programming/runsnakerun/)
+
 ## Enjoy!
 
 Email me with any questions: [omar.bohsali@gmail.com](omar.bohsali@gmail.com).
