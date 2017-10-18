@@ -11,7 +11,7 @@ I found a simple example on @dcramer's [slideshare](http://www.slideshare.net/ze
 $ pip install django-cprofile-middleware
 ```
 
-Then add ```django_cprofile_middleware.middleware.ProfilerMiddleware``` to the end your ```MIDDLEWARE_CLASSES```. 
+Then add ```django_cprofile_middleware.middleware.ProfilerMiddleware``` to the end your ```MIDDLEWARE``` in settings.py. This option was called ```MIDDLEWARE_CLASSES``` in versions of Django before [1.10](https://docs.djangoproject.com/en/1.10/topics/http/middleware/). 
 
 For example:
 
@@ -24,8 +24,6 @@ MIDDLEWARE_CLASSES = (
     'django_cprofile_middleware.middleware.ProfilerMiddleware'
 )
 ```
-
-Again, add the profiler middleware to _the end_ of `MIDDLEWARE_CLASSES` so that it can include middleware operations in the profile.
 
 ## Running & Sorting Results
 
