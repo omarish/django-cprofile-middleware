@@ -6,7 +6,7 @@ except ImportError:
     import profile
 try:
     from cStringIO import StringIO
-except:
+except ImportError:
     from io import StringIO
 
 from django.conf import settings
@@ -29,8 +29,8 @@ class ProfilerMiddleware(MiddlewareMixin):
 
     ?count => The number of rows to display. Default is 100.
 
-    ?download => Download profile file suitable for visualization. For example in
-        snakeviz or RunSnakeRun
+    ?download => Download profile file suitable for visualization. For example
+        in snakeviz or RunSnakeRun
 
     This is adapted from an example found here:
     http://www.slideshare.net/zeeg/django-con-high-performance-django-presentation.
@@ -44,8 +44,9 @@ class ProfilerMiddleware(MiddlewareMixin):
             self.profiler = profile.Profile()
             args = (request,) + callback_args
             try:
-                return self.profiler.runcall(callback, *args, **callback_kwargs)
-            except:
+                return self.profiler.runcall(
+                    callback, *args, **callback_kwargs)
+            except Exception:
                 # we want the process_exception middleware to fire
                 # https://code.djangoproject.com/ticket/12250
                 return
@@ -55,15 +56,19 @@ class ProfilerMiddleware(MiddlewareMixin):
             self.profiler.create_stats()
             if 'download' in request.GET:
                 import marshal
+
                 output = marshal.dumps(self.profiler.stats)
-                response = HttpResponse(output,
-                                        content_type='application/octet-stream')
-                response['Content-Disposition'] = 'attachment; filename=view.prof'
+                response = HttpResponse(
+                    output, content_type='application/octet-stream')
+                response['Content-Disposition'] = 'attachment;' \
+                                                  ' filename=view.prof'
                 response['Content-Length'] = len(output)
             else:
                 io = StringIO()
                 stats = pstats.Stats(self.profiler, stream=io)
+
                 stats.strip_dirs().sort_stats(request.GET.get('sort', 'time'))
                 stats.print_stats(int(request.GET.get('count', 100)))
+
                 response = HttpResponse('<pre>%s</pre>' % io.getvalue())
         return response
