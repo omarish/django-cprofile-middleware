@@ -9,9 +9,14 @@ try:
 except ImportError:
     from io import StringIO
 
+import django
 from django.conf import settings
 from django.http import HttpResponse
-from django.utils.deprecation import MiddlewareMixin
+
+if django.VERSION >= (1, 10):
+    from django.utils.deprecation import MiddlewareMixin
+else:
+    from django_cprofile_middleware.utils import MiddlewareMixin
 
 
 class ProfilerMiddleware(MiddlewareMixin):
