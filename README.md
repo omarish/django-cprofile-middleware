@@ -1,5 +1,6 @@
-django-cprofile-middleware
-==========================
+# django-cprofile-middleware
+
+[![pypi-version]][pypi]
 
 This is a simple profiling middleware for Django applications. I wrote it because I got tired of printing "start" "stop" "stop 2" in my programs to find the bottlenecks.
 
@@ -40,3 +41,7 @@ You can also pass some options:
 ## Enjoy!
 
 Email me with any questions: [omar.bohsali@gmail.com](omar.bohsali@gmail.com).
+
+
+[pypi]: https://pypi.org/project/django-cprofile-middleware/
+[pypi-version]: https://img.shields.io/pypi/v/django-cprofile-middleware.svg
