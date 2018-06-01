@@ -1,11 +1,12 @@
 import re
-from distutils.core import setup
+from setuptools import setup
 from os import path
 
-meta_file = open("django_cprofile_middleware/metadata.py").read()
+project_path = path.abspath(path.dirname(__file__))
+
+meta_file = open(path.join(project_path, "django_cprofile_middleware" ,"metadata.py")).read()
 md = dict(re.findall(r"__([a-z]+)__\s*=\s*'([^']+)'", meta_file))
 
-project_path = path.abspath(path.dirname(__file__))
 
 with open(path.join(project_path, 'README.md')) as f:
     long_description = f.read()
@@ -22,7 +23,6 @@ setup(
     author = md['author'],
     author_email = md['authoremail'],
     url = 'https://github.com/omarish/django-cprofile-middleware/',
-    download_url = 'https://github.com/omarish/django-cprofile-middleware/tarball/v1.0',
     keywords = ['django','profiling','cProfile'],
     classifiers = [
         "Framework :: Django"
