@@ -41,6 +41,11 @@ class ProfilerMiddleware(MiddlewareMixin):
     http://www.slideshare.net/zeeg/django-con-high-performance-django-presentation.
     """
     def can(self, request):
+        requires_staff = getattr(settings, "DJANGO_CPROFILE_MIDDLEWARE_REQUIRE_STAFF", True):
+
+        if requires_staff and not (request.user and request.user.is_staff):
+            return False
+
         return settings.DEBUG and 'prof' in request.GET
 
     def process_view(self, request, callback, callback_args, callback_kwargs):
