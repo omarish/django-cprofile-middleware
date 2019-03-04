@@ -29,7 +29,8 @@ class ProfilerMiddleware(MiddlewareMixin):
     Optionally pass the following to modify the output:
 
     ?sort => Sort the output by a given metric. Default is time.
-        See http://docs.python.org/2/library/profile.html#pstats.Stats.sort_stats
+        See
+        http://docs.python.org/2/library/profile.html#pstats.Stats.sort_stats
         for all sort options.
 
     ?count => The number of rows to display. Default is 100.
@@ -41,7 +42,8 @@ class ProfilerMiddleware(MiddlewareMixin):
     http://www.slideshare.net/zeeg/django-con-high-performance-django-presentation.
     """
     def can(self, request):
-        requires_staff = getattr(settings, "DJANGO_CPROFILE_MIDDLEWARE_REQUIRE_STAFF", True):
+        requires_staff = getattr(
+            settings, "DJANGO_CPROFILE_MIDDLEWARE_REQUIRE_STAFF", True)
 
         if requires_staff and not (request.user and request.user.is_staff):
             return False
