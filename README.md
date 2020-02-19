@@ -16,7 +16,7 @@ Then add ```django_cprofile_middleware.middleware.ProfilerMiddleware``` to the e
 
 For example:
 
-```
+```python
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -24,6 +24,12 @@ MIDDLEWARE_CLASSES = (
     ...
     'django_cprofile_middleware.middleware.ProfilerMiddleware'
 )
+```
+
+The profiler will only be available when the Django setting `DEBUG` is set to `True`. By default it's also required to be an authenticated user with `is_staff` set to `True` which is making the request to be profiled. The `is_staff` check can be configured as follows: 
+
+```python
+DJANGO_CPROFILE_MIDDLEWARE_REQUIRE_STAFF = False
 ```
 
 ## Running & Sorting Results
