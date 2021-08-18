@@ -22,7 +22,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'startup.do.work.FindProductMarketFitMiddleware',
     ...
-    'django_cprofile_middleware.middleware.ProfilerMiddleware'
+    'django_cprofile_middleware.middleware.ProfilerMiddleware',
 )
 ```
 
